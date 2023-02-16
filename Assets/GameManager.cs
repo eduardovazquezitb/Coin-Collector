@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -9,6 +10,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] public List<GameObject> Interactibles;
     [SerializeField] private GameObject floatingPlatform;
+    [SerializeField] public GameObject player;
 
     public int totalCoins;
 
@@ -29,5 +31,16 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.UpdateCoinDisplayer(_collectedCoins);
         if (_collectedCoins >= totalCoins)
             floatingPlatform.GetComponent<Animator>().SetTrigger("StartFloating");
+    }
+
+    public void Win()
+    {
+        StartCoroutine(LoadNewScene());
+    }
+
+    IEnumerator LoadNewScene()
+    {
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene(0);
     }
 }

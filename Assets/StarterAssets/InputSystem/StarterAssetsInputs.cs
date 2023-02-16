@@ -81,9 +81,10 @@ namespace StarterAssets
 			var list = GameManager.Instance.Interactibles;
 			list.ForEach(interactible =>
 			{
+				IInteractible data = interactible.GetComponent<IInteractible>();
 				float distance = (gameObject.GetComponent<Transform>().position - interactible.GetComponent<Transform>().position).magnitude;
-				if(distance < 5f)
-					interactible.GetComponent<IInteractible>().Interact();
+				if(distance < data.Radius())
+					data.Interact();
 			});
         }
 	}

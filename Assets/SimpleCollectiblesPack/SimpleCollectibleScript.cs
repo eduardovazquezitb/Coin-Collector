@@ -46,7 +46,10 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 		//Below is space to add in your code for what happens based on the collectible type
 
-		EventManager.CallOnCoinHasBeenTaken();
+		if (this.gameObject.tag == "Coin")
+			EventManager.CallOnCoinHasBeenTaken();
+		else
+			GameManager.Instance.Win();
 
 		Destroy (gameObject);
 	}

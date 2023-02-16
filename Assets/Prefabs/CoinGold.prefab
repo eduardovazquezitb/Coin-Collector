@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1452491311304883903}
   m_Layer: 2
   m_Name: CoinGold
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   CollectibleType: 0
   rotate: 1
   rotationSpeed: 10
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: a3d8626673bbd7048b5ecd1ce22de0eb, type: 3}
   collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
 --- !u!82 &1517423483192817922
 AudioSource:
