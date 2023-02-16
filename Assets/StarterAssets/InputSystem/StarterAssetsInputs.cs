@@ -75,6 +75,17 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
+
+		public void OnAction()
+        {
+			var list = GameManager.Instance.Interactibles;
+			list.ForEach(interactible =>
+			{
+				float distance = (gameObject.GetComponent<Transform>().position - interactible.GetComponent<Transform>().position).magnitude;
+				if(distance < 5f)
+					interactible.GetComponent<IInteractible>().Interact();
+			});
+        }
 	}
 	
 }

@@ -7,6 +7,11 @@ public class GameManager : Singleton<GameManager>
     private int _collectedCoins;
     public int CollectedCoins { get { return _collectedCoins; } }
 
+    [SerializeField] public List<GameObject> Interactibles;
+    [SerializeField] private GameObject floatingPlatform;
+
+    public int totalCoins;
+
     private void Start()
     {
         _collectedCoins = 0;
@@ -22,5 +27,7 @@ public class GameManager : Singleton<GameManager>
     {
         _collectedCoins++;
         UIManager.Instance.UpdateCoinDisplayer(_collectedCoins);
+        if (_collectedCoins >= totalCoins)
+            floatingPlatform.GetComponent<Animator>().SetTrigger("StartFloating");
     }
 }
